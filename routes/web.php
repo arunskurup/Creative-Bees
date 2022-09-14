@@ -14,11 +14,9 @@ use App\Http\Controllers\CrudController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::middleware(['auth:sanctum'])->group(function () {
 //list Employee data
+Route::get('/', [CrudController::class, 'list'])->name('Employee.list');
 Route::get('Employee/List', [CrudController::class, 'list'])->name('Employee.list');
 Route::post('Employee/Create', [CrudController::class, 'Create'])->name('Employee.Create');
 Route::post('Employee/Info/{id}', [CrudController::class, 'info'])->name('Employee.Info');
